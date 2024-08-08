@@ -1,4 +1,4 @@
-import 'package:bloggers_hub/core/theme.dart';
+import 'package:bloggers_hub/core/theme/theme.dart';
 import 'package:bloggers_hub/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 

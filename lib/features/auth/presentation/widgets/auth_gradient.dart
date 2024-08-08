@@ -1,4 +1,4 @@
-import 'package:bloggers_hub/core/app_pallete.dart';
+import 'package:bloggers_hub/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
 
 class AuthGradientButtonn extends StatefulWidget {
