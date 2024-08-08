@@ -1,8 +1,10 @@
 import 'package:bloggers_hub/core/theme/app_pallete.dart';
+import 'package:bloggers_hub/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bloggers_hub/features/auth/presentation/pages/login_page.dart';
 import 'package:bloggers_hub/features/auth/presentation/widgets/auth_gradient.dart';
 import 'package:bloggers_hub/features/auth/presentation/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -64,14 +66,22 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               AuthGradientButtonn(
                 buttonText: 'Sign Up',
-                onPressed: () async {},
+                onPressed: () async {
+                  context.read<AuthBloc>().add(
+                        AuthSignUp(
+                          emailController.text.trim(),
+                          passwordController.text.trim(),
+                          nameController.text.trim(),
+                        ),
+                      );
+                },
               ),
               const SizedBox(
                 height: 15,
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context,LoginPage.route());
+                  Navigator.push(context, LoginPage.route());
                 },
                 child: RichText(
                   text: TextSpan(
