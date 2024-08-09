@@ -2,7 +2,7 @@ import 'package:bloggers_hub/core/error/failure.dart';
 import 'package:bloggers_hub/core/error/server_exception.dart';
 import 'package:bloggers_hub/features/auth/data/datasources/auth_remote_datasources.dart';
 import 'package:bloggers_hub/features/auth/data/models/user_model.dart';
-import 'package:bloggers_hub/features/auth/domain/entities/user_entity.dart';
+import 'package:bloggers_hub/core/entities/user_entity.dart';
 import 'package:bloggers_hub/features/auth/domain/repository/auth_repository.dart';
 import 'package:fpdart/src/either.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as sb;
