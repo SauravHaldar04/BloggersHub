@@ -13,6 +13,6 @@ final class AuthFailure extends AuthState {
 }
 
 final class AuthSuccess extends AuthState {
-  final String uid;
-  AuthSuccess(this.uid);
+  final User user;
+  AuthSuccess(this.user);
 }

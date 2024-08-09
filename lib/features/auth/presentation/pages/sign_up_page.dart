@@ -74,6 +74,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           nameController.text.trim(),
                         ),
                       );
+                  print("clicked");
                 },
               ),
               const SizedBox(
