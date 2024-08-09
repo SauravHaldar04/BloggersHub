@@ -2,6 +2,7 @@ import 'package:bloggers_hub/core/secrets/secrets.dart';
 import 'package:bloggers_hub/features/auth/data/datasources/auth_remote_datasources.dart';
 import 'package:bloggers_hub/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:bloggers_hub/features/auth/domain/repository/auth_repository.dart';
+import 'package:bloggers_hub/features/auth/domain/usecases/current_user.dart';
 import 'package:bloggers_hub/features/auth/domain/usecases/user_login.dart';
 import 'package:bloggers_hub/features/auth/domain/usecases/user_signup.dart';
 import 'package:bloggers_hub/features/auth/presentation/bloc/auth_bloc.dart';
@@ -19,30 +20,37 @@ Future<void> initDependencies() async {
 }
 
 void _initAuth() {
-  serviceLocator.registerFactory<AuthRemoteDatasources>(
-    () => AuthRemoteDatasourcesImpl(
-      serviceLocator(),
-    ),
-  );
-  serviceLocator.registerFactory<AuthRepository>(
-    () => AuthRepositoryImpl(
-      serviceLocator(),
-    ),
-  );
-  serviceLocator.registerFactory(
-    () => UserSignup(
-      serviceLocator(),
-    ),
-  );
-  serviceLocator.registerFactory(
-    () => UserLogin(
-      serviceLocator(),
-    ),
-  );
-  serviceLocator.registerLazySingleton(
-    () => AuthBloc(
-      userLogin: serviceLocator(),
-      userSignup: serviceLocator(),
-    ),
-  );
+  serviceLocator
+    ..registerFactory<AuthRemoteDatasources>(
+      () => AuthRemoteDatasourcesImpl(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory<AuthRepository>(
+      () => AuthRepositoryImpl(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => UserSignup(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => UserLogin(
+        serviceLocator(),
+      ),
+    )
+    ..registerFactory(
+      () => CurrentUser(
+        serviceLocator(),
+      ),
+    )
+    ..registerLazySingleton(
+      () => AuthBloc(
+        userLogin: serviceLocator(),
+        userSignup: serviceLocator(),
+        currentUser: serviceLocator(),
+      ),
+    );
 }
