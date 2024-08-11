@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:bloggers_hub/core/common/cubits/auth_user/auth_user_cubit.dart';
-import 'package:bloggers_hub/core/error/failure.dart';
 import 'package:bloggers_hub/core/usecase/usecase.dart';
 import 'package:bloggers_hub/core/entities/user_entity.dart';
 import 'package:bloggers_hub/features/auth/domain/usecases/current_user.dart';
@@ -9,8 +6,6 @@ import 'package:bloggers_hub/features/auth/domain/usecases/user_login.dart';
 import 'package:bloggers_hub/features/auth/domain/usecases/user_signup.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fpdart/fpdart.dart';
-import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 part 'auth_event.dart';
 part 'auth_state.dart';
 

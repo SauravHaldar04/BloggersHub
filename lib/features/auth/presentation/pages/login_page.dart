@@ -1,4 +1,4 @@
-import 'package:bloggers_hub/core/common/utils/utils.dart';
+import 'package:bloggers_hub/core/common/utils/snackbar.dart';
 import 'package:bloggers_hub/core/common/widgets/loader.dart';
 import 'package:bloggers_hub/core/theme/app_pallete.dart';
 import 'package:bloggers_hub/features/auth/presentation/bloc/auth_bloc.dart';
