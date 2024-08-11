@@ -10,13 +10,15 @@ class AppTheme {
     scaffoldBackgroundColor: Pallete.backgroundColor,
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: EdgeInsets.all(27),
+      border: _border(Pallete.borderColor),
       focusedBorder: _border(Pallete.gradient2),
       enabledBorder: _border(Pallete.borderColor),
+      errorBorder: _border(Pallete.errorColor),
     ),
     chipTheme: const ChipThemeData(
-        backgroundColor: Pallete.backgroundColor,
-        side: BorderSide.none,
-        selectedColor: Pallete.gradient1,
-        ),
+      backgroundColor: Pallete.backgroundColor,
+      side: BorderSide.none,
+      selectedColor: Pallete.gradient1,
+    ),
   );
 }

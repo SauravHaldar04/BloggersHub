@@ -21,6 +21,13 @@ class _BlogTextfieldState extends State<BlogTextfield> {
         hintText: widget.hintText,
       ),
       maxLines: null,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return '${widget.hintText} is missing';
+        }
+        return null;
+      },
     );
+    
   }
 }
