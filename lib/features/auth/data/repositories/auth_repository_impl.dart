@@ -1,3 +1,4 @@
+import 'package:bloggers_hub/core/common/network/check_internet_connection.dart';
 import 'package:bloggers_hub/core/error/failure.dart';
 import 'package:bloggers_hub/core/error/server_exception.dart';
 import 'package:bloggers_hub/features/auth/data/datasources/auth_remote_datasources.dart';
@@ -9,7 +10,9 @@ import 'package:supabase_flutter/supabase_flutter.dart' as sb;
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDatasources authRemoteDatasources;
-  const AuthRepositoryImpl(this.authRemoteDatasources);
+  final CheckInternetConnection checkInternetConnection;
+  const AuthRepositoryImpl(
+      this.authRemoteDatasources, this.checkInternetConnection);
   @override
   Future<Either<Failure, User>> loginWithEmailAndPassword(
       {required String email, required String password}) {
@@ -27,6 +30,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
   Future<Either<Failure, User>> _getUser(Future<User> Function() fn) async {
     try {
+      bool isConnected = await checkInternetConnection.isConnected;
+      if (!isConnected) {
+        return Left(Failure('No internet connection'));
+      }
       final user = await fn();
       return Right(user);
     } on sb.AuthException catch (e) {
@@ -35,17 +42,24 @@ class AuthRepositoryImpl implements AuthRepository {
       return Left(Failure(e.message));
     }
   }
-  
+
   @override
-  Future<Either<Failure, User>> getCurrentUser()async {
-    try{
+  Future<Either<Failure, User>> getCurrentUser() async {
+    try {
+      if (!await checkInternetConnection.isConnected) {
+        final session = authRemoteDatasources.session;
+        if (session == null) {
+          return Left(Failure('No internet connection'));
+        }
+        return Right(User(
+            email: session.user.email ?? '', id: session.user.id, name: ''));
+      }
       final user = await authRemoteDatasources.getCurrentUser();
-      if(user == null){
+      if (user == null) {
         return Left(Failure('User is not logged in'));
       }
       return Right(user);
-    }
-    on ServerException catch(e){
+    } on ServerException catch (e) {
       return Left(Failure(e.toString()));
     }
   }

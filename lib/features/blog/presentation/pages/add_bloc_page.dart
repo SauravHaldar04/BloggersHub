@@ -94,7 +94,6 @@ class _AddBlocPageState extends State<AddBlocPage> {
                                 image!,
                                 fit: BoxFit.cover,
                                 width: double.infinity,
-                                height: 200,
                               ),
                             )
                           : DottedBorder(

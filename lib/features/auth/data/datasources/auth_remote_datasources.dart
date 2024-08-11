@@ -3,6 +3,7 @@ import 'package:bloggers_hub/features/auth/data/models/user_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract interface class AuthRemoteDatasources {
+  Session? get session;
   Future<UserModel> signInWithEmailAndPassword({
     required String name,
     required String email,

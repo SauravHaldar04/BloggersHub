@@ -5,6 +5,7 @@ import 'package:bloggers_hub/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:bloggers_hub/features/auth/presentation/pages/login_page.dart';
 import 'package:bloggers_hub/features/auth/presentation/widgets/auth_gradient.dart';
 import 'package:bloggers_hub/features/auth/presentation/widgets/custom_textfield.dart';
+import 'package:bloggers_hub/features/blog/presentation/pages/blog_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,6 +42,9 @@ class _SignUpPageState extends State<SignUpPage> {
           listener: (context, state) {
             if (state is AuthFailure) {
               showSnackbar(context, state.message);
+            }
+            if (state is AuthSuccess) {
+              Navigator.push(context, BlogPage.route());
             }
           },
           builder: (context, state) {

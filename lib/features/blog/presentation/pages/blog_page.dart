@@ -59,12 +59,12 @@ class _BlogPageState extends State<BlogPage> {
                   return BlogCard(
                     blog: state.blogs[index],
                     color: index % 4 == 0
-                        ? Color.fromARGB(255, 206, 66, 56)
+                        ? const Color.fromARGB(255, 206, 66, 56)
                         : index % 4 == 1
-                            ? Color.fromARGB(255, 17, 184, 22)
+                            ? const Color.fromARGB(255, 17, 184, 22)
                             : index % 4 == 2
-                                ? Color.fromARGB(255, 222, 220, 73)
-                                : Color.fromARGB(255, 96, 137, 207),
+                                ? const Color.fromARGB(255, 222, 220, 73)
+                                : const Color.fromARGB(255, 96, 137, 207),
                     textColor: index % 4 == 2
                         ? Colors.black
                         : index % 4 == 3
