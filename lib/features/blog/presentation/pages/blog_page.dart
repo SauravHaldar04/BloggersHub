@@ -1,7 +1,9 @@
 import 'package:bloggers_hub/core/common/utils/snackbar.dart';
 import 'package:bloggers_hub/core/common/widgets/loader.dart';
+import 'package:bloggers_hub/core/theme/app_pallete.dart';
 import 'package:bloggers_hub/features/blog/presentation/bloc/bloc/blog_bloc.dart';
 import 'package:bloggers_hub/features/blog/presentation/pages/add_bloc_page.dart';
+import 'package:bloggers_hub/features/blog/presentation/widgets/blog_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -54,9 +56,20 @@ class _BlogPageState extends State<BlogPage> {
             return ListView.builder(
                 itemCount: state.blogs.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(state.blogs[index].title),
-                    subtitle: Text(state.blogs[index].content),
+                  return BlogCard(
+                    blog: state.blogs[index],
+                    color: index % 4 == 0
+                        ? Color.fromARGB(255, 206, 66, 56)
+                        : index % 4 == 1
+                            ? Color.fromARGB(255, 17, 184, 22)
+                            : index % 4 == 2
+                                ? Color.fromARGB(255, 222, 220, 73)
+                                : Color.fromARGB(255, 96, 137, 207),
+                    textColor: index % 4 == 2
+                        ? Colors.black
+                        : index % 4 == 3
+                            ? Colors.black
+                            : Colors.white,
                   );
                 });
           } else {
