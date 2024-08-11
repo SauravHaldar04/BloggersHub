@@ -11,3 +11,5 @@ class BlogUpload extends BlogEvent {
   final String posterId;
   BlogUpload(this.title, this.content, this.image, this.topics, this.posterId);
 }
+
+class BlogFetchAllBlogs extends BlogEvent {}

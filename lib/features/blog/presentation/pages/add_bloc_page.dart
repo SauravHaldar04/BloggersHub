@@ -69,7 +69,7 @@ class _AddBlocPageState extends State<AddBlocPage> {
               if (state is BlogFailure) {
                 showSnackbar(context, state.message);
               }
-              if (state is BlogSuccess) {
+              if (state is BlogUploadSuccess) {
                 showSnackbar(context, "Blog Uploaded Successfully");
                 Navigator.pushAndRemoveUntil(
                     context, BlogPage.route(), (route) => false);
